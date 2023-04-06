@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Clima </q-toolbar-title>
+        <q-toolbar-title> aplicação</q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -40,12 +40,35 @@ import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
+
+  {
+    title:"Inicio",
+    caption:"Página Inicial",
+    icon:"home",
+    link:"#/"
+  },
+
   {
     title: "Clima",
     caption: "Pesquise o clima por região.",
     icon: "cloud",
-    link: "https://quasar.dev/clima",
+    link: "#/clima",
   },
+
+  {
+    title: "Denuncia",
+    caption: "Faça a sua denuncia",
+    icon: "warning",
+    link: "#/denuncia",
+  },
+
+  {
+    title:"Gerenciamento",
+    caption:"Gerenciamento de Poluição",
+    icon:"description",
+    link:"#/gerenciamento"
+
+  }
 ];
 
 export default defineComponent({
