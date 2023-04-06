@@ -7,7 +7,7 @@ const routes = [
       { path: '', component: () => import('src/pages/InicioTempo.vue') },
       { path: '/clima', component: () => import('src/pages/ClimaTempo.vue') },
       { path: '/denuncia', component: () => import('src/pages/FormularioDenuncia.vue') },
-      { path: '/gerenciamento', component: () => import('src/pages/GerenciamentoPoluicao.vue') }
+      { path: '/gerenciamento', component: () => import('src/pages/GerenciamentoPoluicao.vue') },
     ]
   },
 
