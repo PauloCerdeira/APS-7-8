@@ -5,7 +5,9 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('src/pages/InicioTempo.vue') },
-      { path: '/Clima', component: () => import('src/pages/ClimaTempo.vue') }
+      { path: '/clima', component: () => import('src/pages/ClimaTempo.vue') },
+      { path: '/denuncia', component: () => import('src/pages/FormularioDenuncia.vue') },
+      { path: '/gerenciamento', component: () => import('src/pages/GerenciamentoPoluicao.vue') },
     ]
   },
 
