@@ -44,8 +44,6 @@
       class="q-mx-auto q-my-md text-h5 row"
       style="border-radius: 15px; border: 1px solid lightgrey"
     >
-      <!-- todo: colocar data aqui em cima -->
-
       <div class="col-6 q-py-md q-px-sm row content-center">
         <div class="col-12">{{ Math.ceil(selectedLocation.main.temp) }} °C</div>
         <div class="text-caption col-12" style="font-size: 0.7rem">
