@@ -152,7 +152,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "IndexPage",
+  name: "ClimaTempo",
   data() {
     return {
       windDeg: 10,
