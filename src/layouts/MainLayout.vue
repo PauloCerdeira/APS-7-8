@@ -57,7 +57,7 @@ const linksList = [
 
   {
     title: "Denuncia",
-    caption: "Faça a sua denuncia",
+    caption: "Faça a sua denuncia ambiental",
     icon: "warning",
     link: "#/denuncia",
   },
