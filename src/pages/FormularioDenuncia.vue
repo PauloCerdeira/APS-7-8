@@ -9,6 +9,7 @@
         v-model="dados.denuncia.anonimo"
         label="Denuncia Anonima"
       />
+     
     <div v-if="!dados.denuncia.anonimo">
       <q-input v-model="dados.denunciante.graus" label="Seu nome" hint="Nome e sobrenome"/>
       <q-input v-model="dados.denunciante.localizacao" label="Seu endereço"/>
