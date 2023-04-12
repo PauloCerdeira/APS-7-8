@@ -1,8 +1,5 @@
 <template>
-  <q-page class="q-py-md q-px-sm">
-    <h1>Gerenciamento Poluição</h1>
-    {{ a + b }}
-  </q-page>
+  <q-page class="q-py-md q-px-sm"> </q-page>
 </template>
 
 <script>
@@ -11,22 +8,11 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "GerenciamentoPoluicao",
   data() {
-    return {
-      a: 1,
-      b:"Tatuapé"
-    };
+    return {};
   },
-  async created() {
-    console.log("Iniciou aplicação")
-  },
-  methods: {
-    teste(){
-      console.log("Teste")
-    }
-  },
+  async created() {},
+  methods: {},
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,6 +1,7 @@
 <template>
   <q-page class="q-py-md q-px-sm">
     <q-input
+      style="max-width: 450px; margin: auto"
       filled
       @keyup="getLocations()"
       v-model="search_location"
@@ -41,8 +42,8 @@
 
     <div
       v-if="selectedLocation"
-      class="q-mx-auto q-my-md text-h5 row"
-      style="border-radius: 15px; border: 1px solid lightgrey"
+      class="q-mx-auto q-my-md text-h5 row text-center"
+      style="border-radius: 15px; border: 1px solid lightgrey; max-width: 450px"
     >
       <div class="col-6 q-py-md q-px-sm row content-center">
         <div class="col-12">{{ Math.ceil(selectedLocation.main.temp) }} °C</div>
@@ -129,7 +130,7 @@
     </div>
     <div
       v-else
-      style="border-radius: 15px; border: 1px solid lightgrey"
+      style="border-radius: 15px; border: 1px solid lightgrey; max-width: 450px"
       class="q-mx-auto q-my-md row"
     >
       <div class="col-6 q-pa-sm">
@@ -174,7 +175,6 @@ export default defineComponent({
   },
   methods: {
     async getLocations() {
-      console.log("rodou", this.search_location);
       if (this.search_location.trim().length > 2) {
         if (this.search_location.trim() == this.last_search.trim()) return;
         this.last_search = this.search_location;
@@ -190,7 +190,6 @@ export default defineComponent({
               }`
             )
           ).data;
-          console.log(this.search_results);
         } else {
           this.search_pending = true;
           setTimeout(async () => {
@@ -206,7 +205,6 @@ export default defineComponent({
             } else {
               this.search_results = [];
             }
-            console.log(this.search_results);
             this.search_pending = false;
           }, 2000);
         }
@@ -224,7 +222,6 @@ export default defineComponent({
       this.selectedLocation.state = location.state;
       this.search_location = location.name;
       this.search_results = [];
-      console.log(this.selectedLocation);
     },
   },
 });

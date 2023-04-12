@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> aplicação</q-toolbar-title>
+        <q-toolbar-title> {{ currentTitle }}</q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -38,38 +38,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
-
-const linksList = [
-
-  {
-    title:"Inicio",
-    caption:"Página Inicial",
-    icon:"home",
-    link:"#/"
-  },
-
-  {
-    title: "Clima",
-    caption: "Pesquise o clima por região.",
-    icon: "cloud",
-    link: "#/clima",
-  },
-
-  {
-    title: "Denuncia",
-    caption: "Faça a sua denuncia ambiental",
-    icon: "warning",
-    link: "#/denuncia",
-  },
-
-  {
-    title:"Gerenciamento",
-    caption:"Gerenciamento de Poluição",
-    icon:"description",
-    link:"#/gerenciamento"
-
-  }
-];
+import linksList from "../utils/linksList";
 
 export default defineComponent({
   name: "MainLayout",
@@ -77,7 +46,6 @@ export default defineComponent({
   components: {
     EssentialLink,
   },
-
   setup() {
     const leftDrawerOpen = ref(false);
 
@@ -88,6 +56,27 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
     };
+  },
+  created() {
+    linksList.forEach((e) => {
+      if (e.link == this.$route.href) {
+        this.currentTitle = e.title;
+      }
+    });
+  },
+  data() {
+    return {
+      currentTitle: "cu",
+    };
+  },
+  watch: {
+    $route(destination) {
+      linksList.forEach((e) => {
+        if (e.link == destination.href) {
+          this.currentTitle = e.title;
+        }
+      });
+    },
   },
 });
 </script>
