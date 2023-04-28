@@ -1,33 +1,44 @@
 <template>
-  <q-page class="q-py-md q-px-sm">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <q-toggle v-model="dados.denuncia.anonimo" label="Denuncia Anonima" />
+  <q-page
+    class="q-py-md q-px-sm text-center column justify-between items-center"
+  >
+    <div style="width: 100%; max-width: 450px; margin: 0px auto">
+      <q-toggle v-model="dados.denuncia.anonima" label="Denuncia Anonima" />
 
-    <div v-if="!dados.denuncia.anonimo">
+      <div class="q-mb-xl" v-if="!dados.denuncia.anonima">
+        <q-input
+          v-model="dados.denunciante.nome"
+          label="Digite seu nome completo"
+        />
+        <q-input
+          v-model="dados.denunciante.endereco"
+          label="Rua, numero e complemento"
+        />
+        <q-input
+          v-model="dados.denunciante.contato"
+          label="Telefone ou celular"
+        />
+      </div>
+
       <q-input
-        v-model="dados.denunciante.graus"
-        label="Seu nome"
-        hint="Nome e sobrenome"
+        v-model="dados.denuncia.endereco"
+        label="Endereço ou local da denuncia"
       />
-      <q-input v-model="dados.denunciante.localizacao" label="Seu endereço" />
-      <q-input v-model="dados.denunciante.bairro" label="Seu bairro" />
-      <q-input v-model="dados.denunciante.cep" label="Seu CEP" />
+      <q-input v-model="dados.denuncia.titulo" label="Resumo da denuncia" />
+      <q-input
+        type="textarea"
+        v-model="dados.denuncia.descricao"
+        label="Descrição total da denuncia"
+      />
+      <br />
     </div>
-
-    <q-input v-model="dados.denuncia.graus" label="Temperatura do local" />
-    <q-input v-model="dados.denuncia.localizacao" label="Informe o local" />
-    <br />
     <q-btn
       @click="enviarDenuncia()"
       push
       color="blue"
       text-color="white"
       label="Enviar Denuncia"
+      style="max-width: 200px"
     />
   </q-page>
 </template>
@@ -41,16 +52,15 @@ export default defineComponent({
     return {
       dados: {
         denuncia: {
-          graus: "",
-          localizacao: "",
-          anonimo: false,
+          endereco: "",
+          titulo: "",
+          descricao: "",
+          anonima: false,
         },
-
         denunciante: {
           nome: "",
           endereco: "",
-          bairro: "",
-          cep: "",
+          contato: "",
         },
       },
     };
@@ -58,8 +68,12 @@ export default defineComponent({
   async created() {},
   methods: {
     async enviarDenuncia() {
-      let a = await this.$webService.post("/denuncia", this.dados);
-      console.log(a);
+      let res = await this.$webService.post("/denuncia", this.dados);
+      if (res.data.error) {
+        console.log("deu erro", res.data.error);
+      } else {
+        console.log("deu certo");
+      }
     },
   },
 });

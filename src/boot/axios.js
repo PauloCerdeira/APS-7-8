@@ -6,7 +6,7 @@ const openWeatherApi = axios.create({
 });
 
 const webService = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:8080",
 });
 
 export default boot(({ app }) => {
